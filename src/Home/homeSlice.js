@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import { compareTwoArray, getMinMax } from "../Helpers/mainFunc";
 
-const GET_ALL = "https://leader.bet/api/?app=test";
-// const GET_ALL = "http://localhost:2211/";
+// const GET_ALL = "https://leader.bet/api/?app=test";
+const GET_ALL = "https://liderbet-test-back.herokuapp.com/";
 
 const initialState = {
 	data: [],
