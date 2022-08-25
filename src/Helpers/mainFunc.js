@@ -30,11 +30,11 @@ export const compareTwoArray = (arr1, arr2) => {
 
 
 export const getMinMax = (arr, n) => {
-	let minmax = new Array();
+	let minmax = [];
 	var i;
 	if (n > 0) {
 
-		if (n == 1) {
+		if (n === 1) {
 			minmax.max = arr[0].price;
 			minmax.min = arr[0].price;
 			return minmax;

@@ -54,22 +54,24 @@ const LeftSide = () => {
 				</div>
 			</li>
 			{
-				menus && menus.map((el, k) => {
+				menus.length > 0 && menus.map((el, k) => {
 					if (el.children) {
 						return (
 							<li className={className("leftMenu", el.name.toLowerCase(), isChecked(el.id) && "active")} key={k} name={el.name} >
 								<div onClick={() => topMenuHandler(el)}>
 									<span name={el.name} >{el.name}</span>
 								</div>
-								{el.children.length > 0 && <List style={{ display: isChecked(el.id) ? "block" : "none" }} >
-									{Object.keys(el.children).map((it, i) => (
-										<li className={className((el.children[it].name).toLowerCase(), "leftMenuchild", isChecked(el.children[it].id) && "active")} onClick={() => subMenuHandler(el.children[it].id)} key={i}>
-											<i className="form-check-input"></i>
+								{el.children.length > 0 && (
+									<List style={{ display: isChecked(el.id) ? "block" : "none" }} >
+										{Object.keys(el.children).map((it, i) => (
+											<li className={className((el.children[it].name).toLowerCase(), "leftMenuchild", isChecked(el.children[it].id) && "active")} onClick={() => subMenuHandler(el.children[it].id)} key={i}>
+												<i className="form-check-input"></i>
 
-											<span mbs={el.children[it].id} className='childMenu'>{el.children[it] ? el.children[it].name : ""}</span>
-										</li>
-									))}
-								</List>}
+												<span mbs={el.children[it].id} className='childMenu'>{el.children[it] ? el.children[it].name : ""}</span>
+											</li>
+										))}
+									</List>
+								)}
 							</li>
 						);
 					}

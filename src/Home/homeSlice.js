@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import { compareTwoArray, getMinMax } from "../Helpers/mainFunc";
 
-const GET_ALL = "https://leader.bet/api/?app=test";
-// const GET_ALL = "http://localhost:2211/";
+// const GET_ALL = "https://leader.bet/api/?app=test";
+const GET_ALL = "http://localhost:2211/";
 
 const initialState = {
 	data: [],
@@ -122,13 +122,13 @@ const homeSlice = createSlice({
 					Object.keys(all.marketItem).map(key => {
 						let discId = all.marketItem[key].discountId;
 						if (all.marketItem[key].currencyId === state.currency) {
-							productViewGEL.push({
+							return productViewGEL.push({
 								...all.marketItem[key],
 								product: all.products[all.marketItem[key].productId],
 								discount: discId ? all.discounts[discId] : null,
 							});
 						} else {
-							productViewLBP.push({
+							return productViewLBP.push({
 								...all.marketItem[key],
 								product: all.products[all.marketItem[key].productId],
 								discount: discId ? all.discounts[discId] : null,
