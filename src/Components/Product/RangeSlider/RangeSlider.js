@@ -1,4 +1,4 @@
-import Nouislider from "nouislider-react";
+import Nouislider from "react-nouislider";
 import { useDispatch, useSelector, } from "react-redux";
 import {
 	filterPrice,
@@ -12,6 +12,7 @@ const RangeSlider = () => {
 	const rangeOnly = useSelector(minMaxRange);
 	const maxRange = useSelector(getRange);
 	const dispatch = useDispatch();
+
 
 
 	return (

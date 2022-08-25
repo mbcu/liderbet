@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import axios from "axios";
 import { compareTwoArray, getMinMax } from "../Helpers/mainFunc";
 
-const GET_ALL = "https://leader.bet/api/?app=test";
-// const GET_ALL = "http://localhost:2211/";
+// const GET_ALL = "https://leader.bet/api/?app=test";
+const GET_ALL = "http://localhost:2211/";
 
 const initialState = {
 	data: [],
@@ -20,6 +20,7 @@ const initialState = {
 	status: "start",
 	search: "",
 	mobile: false,
+	loading: true,
 };
 
 export const fetchData = createAsyncThunk("main/lists", async () => {
@@ -90,7 +91,11 @@ const homeSlice = createSlice({
 		},
 	},
 	extraReducers(builder) {
+
 		builder
+			.addCase(fetchData.pending, (state) => {
+				state.loading = true;
+			})
 			.addCase(fetchData.fulfilled, (state, action) => {
 				const all = action.payload;
 				const menuTags = all.tags;
@@ -155,6 +160,8 @@ const homeSlice = createSlice({
 				state.range = [
 					{ min: Number(rangeValues.min), max: Number(rangeValues.max) },
 				];
+
+				state.loading = false;
 			});
 	},
 });
@@ -170,6 +177,8 @@ export const getRange = state =>
 
 export const selectLeftActive = state => state.info.leftMenuAction;
 export const selectTopActive = state => state.info.topMenu;
+
+export const loadingState = state => state.info.loading;
 
 export const selectFilter = state => state.info.filterBarTags;
 export const getDataStatus = state => state.info.status;
