@@ -3,7 +3,7 @@ import axios from "axios";
 import { compareTwoArray, getMinMax } from "../Helpers/mainFunc";
 
 // const GET_ALL = "https://leader.bet/api/?app=test";
-const GET_ALL = "https://liderbet-test-back.herokuapp.com/";
+const GET_ALL = "https://main.tyn.ge/";
 
 const initialState = {
 	data: [],
