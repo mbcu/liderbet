@@ -1,4 +1,4 @@
-import Nouislider from "react-nouislider";
+import Nouislider from "nouislider-react";
 import { useDispatch, useSelector, } from "react-redux";
 import {
 	filterPrice,
